@@ -14,7 +14,7 @@ public class NewBehaviourScript : MonoBehaviour
     public Transform groundCheck;
 
 
-
+    
     private bool grounded = false;
     private Animator anim;
     private Rigidbody2D rb2d;
