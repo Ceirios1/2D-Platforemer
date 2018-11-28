@@ -15,9 +15,12 @@ public class NewBehaviourScript : MonoBehaviour
 
 
     
-    private bool grounded = false;
+    
     private Animator anim;
     private Rigidbody2D rb2d;
+
+    Vector2 myPos;
+    Vector2 groundCheckPos;
 
 
 
@@ -32,15 +35,33 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-
-        if (Input.GetButtonDown("Jump") && grounded)
+        myPos = new Vector2(transform.position.x, transform.position.y);
+        groundCheckPos = new Vector2(transform.position.x, transform.position.y);
+        if (Input.GetKey("w") && !isGrounded())
         {
-            jump = true;
+            transform.position += Vector3.up * 20 * Time.deltaTime;
         }
     }
 
-    void FixedUpdate()
+    public bool isGrounded()
+    {
+
+        return Physics2D.Linecast(myPos, groundCheckPos, 1 << LayerMask.NameToLayer("Ground"));
+
+        if (result)
+        {
+            Debug.DrawLine(myPos, groundCheckPos, Color.green, 0.5f, false);
+        }
+        else
+        {
+            Debug.DrawLine(myPos, groundCheckPos, Color.red, 0.5f, false);
+        }
+        return result;
+    }
+}
+
+
+void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
 
@@ -57,12 +78,7 @@ public class NewBehaviourScript : MonoBehaviour
         else if (h < 0 && facingright)
             Flip();
 
-        if (jump)
-        {
-            anim.SetTrigger("Jump");
-            rb2d.AddForce(new Vector2(0f, jumpforce));
-            jump = false;
-        }
+        
     }
 
 
@@ -73,7 +89,7 @@ public class NewBehaviourScript : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-}
+
 
 
 
