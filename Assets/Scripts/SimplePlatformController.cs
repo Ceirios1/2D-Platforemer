@@ -2,14 +2,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour
+public class SimplePlatformController : MonoBehaviour
 {
 
     [HideInInspector] public bool facingRight = true;
     [HideInInspector] public bool jump = false;
     public float moveForce = 365f;
     public float maxSpeed = 5f;
-    public float jumpForce = 150f;
+    public float jumpForce = 1000f;
     public Transform groundCheck;
 
 
@@ -23,21 +23,25 @@ public class NewBehaviourScript : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        Debug.Log("gfhsf" );
     }
 
     // Update is called once per frame
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        Debug.Log("grounded: " + grounded);
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jump = true;
+            
         }
     }
 
     void FixedUpdate()
     {
+        Debug.Log("jhergfuvsdf " );
         float h = Input.GetAxis("Horizontal");
 
         anim.SetFloat("Speed", Mathf.Abs(h));
