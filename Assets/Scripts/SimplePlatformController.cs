@@ -23,14 +23,14 @@ public class SimplePlatformController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        Debug.Log("gfhsf" );
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        Debug.Log("grounded: " + grounded);
+        
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -41,7 +41,7 @@ public class SimplePlatformController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("jhergfuvsdf " );
+        
         float h = Input.GetAxis("Horizontal");
 
         anim.SetFloat("Speed", Mathf.Abs(h));
