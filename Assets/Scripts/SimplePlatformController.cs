@@ -30,8 +30,8 @@ public class SimplePlatformController : MonoBehaviour
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        
 
+        Debug.Log("grounded =" + grounded);
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jump = true;
