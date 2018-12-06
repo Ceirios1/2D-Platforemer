@@ -13,9 +13,9 @@ public class SimplePlatformController : MonoBehaviour
     public Transform groundCheck;
 
 
-    private bool grounded = false;
-    private Animator anim;
-    private Rigidbody2D rb2d;
+    public bool grounded = false;
+    public Animator anim;
+    public Rigidbody2D rb2d;
 
 
     // Use this for initialization

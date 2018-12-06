@@ -1598,12 +1598,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89ea4669b910e241a34c1f428b12b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingright: 1
+  facingRight: 1
   jump: 1
   moveForce: 365
-  maxspeed: 5
-  jumpforce: 1000
-  groundCheck: {fileID: 0}
+  maxSpeed: 5
+  jumpForce: 1000
+  groundCheck: {fileID: 1193760163}
 --- !u!1 &1602474842
 GameObject:
   m_ObjectHideFlags: 0
