@@ -17,6 +17,8 @@ public class SimplePlatformController : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rb2d;
 
+    public int BaseSpeed { get; internal set; }
+
 
     // Use this for initialization
     void Awake()

@@ -18,33 +18,32 @@ public class WallJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Physics2D.queriesStartInColliders = false;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
 
         if (Input.GetButtonDown("Jump") && !movement.grounded && hit.collider != null)
         {
             {
-                GetComponents<SimplePlatformController>().moveForce = new Vector2(speed * hit.normal.x, speed);
-                movement.BaseSpeed = speed * hit.x;
-                walljumping = true;
-                transform.localScale = transform.localScale.x == 1 ? new Vector2(-1, 1) : Vector2.one;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(speed * hit.normal.x, speed);
+
+                StartCoroutine("TurnIt");
+
             }
         }
-        else if (hit.collider != null && walljumping)
-            walljumping = false;
 
     }
-
-   private void OnCollisionEnter2D(Collision2D col)
+    IEnumerable TurnIt()
     {
-        if ((!walljumping || movement.grounded))
-            movement.BaceSpeed = 0;
+        yield return new WaitForFixedUpdate();
+        transform.localScale = transform.localScale.x == 1 ? new Vector2(-1, 1) : Vector2.one;
     }
+
 
     void OnDrawGizmos()
     {
-        Gizmos.Color = Color.Green;
+        Gizmos.color = Color.red;
 
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x, distance);
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3.right * transform.localScale.x));
+
     }
 }
