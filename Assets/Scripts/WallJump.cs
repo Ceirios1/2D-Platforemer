@@ -46,4 +46,5 @@ public class WallJump : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + (Vector3.right * transform.localScale.x));
 
     }
+
 }

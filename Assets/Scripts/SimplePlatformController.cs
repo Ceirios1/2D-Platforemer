@@ -11,7 +11,9 @@ public class SimplePlatformController : MonoBehaviour
     public float maxSpeed = 5f;
     public float jumpForce = 1000f;
     public Transform groundCheck;
-
+    public Transform WallCheckPoint;
+    public bool WallCheck;
+    public LayerMask WallLayerMask;
 
     public bool grounded = false;
     public Animator anim;
