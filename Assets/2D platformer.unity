@@ -250,7 +250,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4805855935807132, guid: 464bca55719896c449bf60d1e93437a8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.07
+      value: 2.68
       objectReference: {fileID: 0}
     - target: {fileID: 4805855935807132, guid: 464bca55719896c449bf60d1e93437a8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -306,7 +306,11 @@ Prefab:
         type: 2}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 6200000, guid: 52d2610d4b3a4ff44bf760cde714db6e, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1161968974413220, guid: 464bca55719896c449bf60d1e93437a8, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114760228201504900, guid: 464bca55719896c449bf60d1e93437a8, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 464bca55719896c449bf60d1e93437a8, type: 2}
@@ -1480,10 +1484,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193760163}
+  - component: {fileID: 1193760164}
   m_Layer: 9
   m_Name: groundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: -2065832391, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1501,6 +1506,31 @@ Transform:
   m_Father: {fileID: 1500610022}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1193760164
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193760162}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.15}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.15}
+  m_EdgeRadius: 0
 --- !u!1 &1209762168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,7 +1942,6 @@ GameObject:
   - component: {fileID: 1500610019}
   - component: {fileID: 1500610018}
   - component: {fileID: 1500610023}
-  - component: {fileID: 1500610024}
   m_Layer: 9
   m_Name: hero
   m_TagString: Player
@@ -2045,23 +2074,15 @@ MonoBehaviour:
   maxSpeed: 5
   jumpForce: 1000
   groundCheck: {fileID: 1193760163}
+  WallCheckPoint: {fileID: 2104114423}
+  WallCheck: 1
+  WallLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  WallSlide: 0
   grounded: 0
   anim: {fileID: 0}
   rb2d: {fileID: 0}
---- !u!114 &1500610024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500610017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d63f67259159b0944b9fb9862d8301cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 1
-  speed: 2
-  walljumping: 1
 --- !u!1 &1525052716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1161968974413220, guid: 464bca55719896c449bf60d1e93437a8,
@@ -2730,7 +2751,7 @@ GameObject:
   m_Layer: 9
   m_Name: Wallcheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2747,24 +2768,6 @@ Transform:
   m_Father: {fileID: 1500610022}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2118956662 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1161968974413220, guid: 464bca55719896c449bf60d1e93437a8,
-    type: 2}
-  m_PrefabInternal: {fileID: 38046844}
---- !u!114 &2118956663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2118956662}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ec9e30a8baf194eb2fa436becd9321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinSpawns: []
-  coin: {fileID: 0}
 --- !u!4 &2118956668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4805855935807132, guid: 464bca55719896c449bf60d1e93437a8,
